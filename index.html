@@ -1,347 +1,193 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roua Badraoui | Full-Stack AI Engineer</title>
-<meta name="description" content="Full-stack AI engineer working on LLM agents, RAG, evaluation and backend systems.">
-<style>
-:root{
-  --bg:#ffffff; --alt:#f5f7fa; --text:#1b2433; --muted:#5a6578; --line:#dfe4ec;
-  --accent:#1d4e89; --accent-soft:#e8f0fa;
-  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root{--bg:#0f1520; --alt:#151d2b; --text:#e6ebf3; --muted:#9aa6ba; --line:#263247;
-        --accent:#7db1ec; --accent-soft:#18263a;}
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--font)}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:980px;margin:0 auto;padding:0 24px}
-
-/* navigation */
-.nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.nav .brand{font-weight:700;color:var(--text)}
-.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-size:.95rem}
-.nav ul a{color:var(--muted)}
-.nav ul a:hover{color:var(--accent);text-decoration:none}
-
-/* profile */
-.profile{padding:56px 0 48px}
-.profile .wrap{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center}
-.photo{width:180px;height:180px;border-radius:50%;background:var(--accent);color:#fff;display:grid;
-  place-items:center;font-size:3rem;font-weight:700;margin:0 auto}
-h1{font-size:2.4rem;line-height:1.15;margin:0 0 4px;letter-spacing:-.02em}
-.title{font-size:1.15rem;color:var(--muted);margin:0 0 14px}
-.summary{max-width:60ch;margin:0 0 18px}
-.facts{list-style:none;margin:0 0 20px;padding:0;color:var(--muted);font-size:.95rem}
-.facts li{margin:2px 0}
-.buttons{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-block;padding:9px 18px;border-radius:6px;border:1px solid var(--accent);
-  color:var(--accent);font-weight:600;font-size:.95rem}
-.btn:hover{text-decoration:none;background:var(--accent-soft)}
-.btn.primary{background:var(--accent);color:#fff}
-.btn.primary:hover{filter:brightness(1.1);background:var(--accent)}
-@media (prefers-color-scheme: dark){.btn.primary{color:#0f1520}}
-
-/* sections */
-section{padding:56px 0;border-top:1px solid var(--line)}
-section.alt{background:var(--alt)}
-h2{font-size:1.6rem;margin:0 0 6px;letter-spacing:-.01em}
-.intro{color:var(--muted);margin:0 0 28px;max-width:62ch}
-h3{font-size:1.1rem;margin:0 0 2px;line-height:1.3}
-.meta{color:var(--muted);font-size:.93rem;margin-bottom:8px}
-ul.list{margin:8px 0 0;padding-left:1.2em}
-ul.list li{margin:5px 0}
-
-.entry{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
-.entry:last-child{border-bottom:0}
-.entry .when{color:var(--muted);font-size:.93rem}
-.entry .org{color:var(--muted);font-size:.95rem;margin-bottom:6px}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column}
-.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
-.tag{background:var(--accent-soft);color:var(--accent);font-size:.8rem;padding:2px 10px;border-radius:999px}
-.card.wide{grid-column:1/-1}
-
-.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.skill{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
-.skill:last-child{border-bottom:0}
-.skill dt{font-weight:600}
-.skill dd{margin:0;color:var(--muted)}
-dl{margin:0}
-
-.contact-list{list-style:none;margin:0 0 20px;padding:0}
-.contact-list li{margin:6px 0}
-.contact-list span{display:inline-block;width:90px;color:var(--muted)}
-footer{padding:26px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-
-@media (max-width:760px){
-  .nav ul{display:none}
-  .profile .wrap{grid-template-columns:1fr;text-align:center}
-  .buttons{justify-content:center}
-  .entry,.skill,.two{grid-template-columns:1fr;gap:4px}
-  .two{gap:28px}
-  h1{font-size:2rem}
-}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roua Badraoui | Ingénieure systèmes embarqués et IoT</title>
+  <meta name="description" content="Roua Badraoui, ingénieure systèmes embarqués et IoT diplômée de l'ISI Ariana. STM32, CAN, IA embarquée, RAG, Node.js. Disponible immédiatement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="layout">
 
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top">Roua Badraoui</a>
-    <nav aria-label="Main">
+  <header class="id">
+    <h1>Roua Badraoui</h1>
+    <p class="role">Ingénieure systèmes embarqués et IoT</p>
+    <p class="status"><i aria-hidden="true"></i> Disponible immédiatement</p>
+    <nav aria-label="Sections">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#formation">Formation et certifications</a></li>
+        <li><a href="lettre.html">Lettre de motivation</a></li>
       </ul>
     </nav>
-  </div>
-</header>
-
-<main id="top">
-
-  <!-- PROFILE -->
-  <div class="profile">
-    <div class="wrap">
-      <div class="photo" aria-hidden="true">RB</div>
-      <div>
-        <h1>Roua Badraoui</h1>
-        <p class="title">Full-Stack AI Engineer: LLM Agents, RAG, Evaluation and Backend</p>
-        <p class="summary">I build production-minded AI agents end to end, from the user interface and backend services to the evaluation and monitoring that make them reliable. I recently completed my engineering degree at ISI Ariana (2026).</p>
-        <ul class="facts">
-          <li>Tunisia, open to relocation across Europe</li>
-          <li>Languages: Arabic, French, English, German (A1)</li>
-        </ul>
-        <div class="buttons">
-          <a class="btn primary" href="uploads/cv.pdf">Download CV</a>
-          <a class="btn" href="mailto:rouabadraoui158@gmail.com">Email</a>
-          <a class="btn" href="https://github.com/rouabadraoui158">GitHub</a>
-          <a class="btn" href="https://linkedin.com/in/roua-badraoui-613b91232">LinkedIn</a>
-        </div>
-      </div>
+    <div class="contact">
+      <p><a href="mailto:rouabadraoui158@gmail.com">rouabadraoui158@gmail.com</a></p>
+      <p><a href="tel:+21650166577">+216 50 166 577</a></p>
+      <p>Sidi Bouzid, Tunisie</p>
+      <p><a href="https://www.linkedin.com/in/roua-badraoui-613b91232">LinkedIn</a> · <a href="https://github.com/rouabadraoui158">GitHub</a></p>
     </div>
-  </div>
+  </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="alt">
-    <div class="wrap">
-      <h2>About</h2>
-      <p class="intro">Who I am and what I work on.</p>
-      <div class="two">
-        <div>
-          <p>I am a full-stack engineer who builds AI agents with React and TypeScript interfaces, Node.js and FastAPI backends, REST APIs, data storage and Docker deployment, together with the evaluation and monitoring that keep them reliable.</p>
-          <p>At STMicroelectronics I built and automated the data and knowledge-base layer of a GenAI technical-support assistant, including RAG pipelines, validation and supervision. I also built an AI-powered Intelligent Office Assistant, and a payment-support agent whose critical decisions are enforced by server-side guardrails and tested with deterministic tests and live LLM evaluations.</p>
-        </div>
-        <div>
-          <h3>Areas of interest</h3>
-          <ul class="list">
-            <li>LLM agents and tool use</li>
-            <li>Retrieval-augmented generation and knowledge-base quality</li>
-            <li>Agent evaluation and testing</li>
-            <li>Responsible and reliable AI systems</li>
-          </ul>
-        </div>
+  <main class="main" id="contenu">
+    <div class="hero">
+      <h2>Du capteur au tableau de bord.</h2>
+      <p class="lead">Je conçois des systèmes qui relient le matériel embarqué, les données et l'IA. Diplômée ingénieure de l'ISI Ariana en octobre 2026, j'ai terminé mon PFE chez STMicroelectronics.</p>
+      <div class="actions">
+        <a class="btn" href="assets/CV_Roua_Badraoui.pdf" download>Télécharger le CV (PDF)</a>
+        <a class="btn ghost" href="lettre.html">Lire la lettre de motivation</a>
       </div>
+
+      <ol class="chain" aria-label="Chaîne de mon projet de bus CAN, du capteur au tableau de bord">
+        <li><b>Données véhicule</b><span>SOC, température, tension, courant</span></li>
+        <li><b>STM32F407</b><span>Firmware, trames à identifiant 11 bits</span></li>
+        <li><b>Bus CAN</b><span>Transceiver TJA1050</span></li>
+        <li><b>Node.js</b><span>Backend et WebSocket</span></li>
+        <li><b>Tableau de bord</b><span>Chart.js, export CSV et JSON</span></li>
+      </ol>
+      <p class="caption">La chaîne de mon projet d'émulation de bus CAN automobile.</p>
     </div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <h2>Experience</h2>
-      <p class="intro">Internships and professional roles, most recent first.</p>
-
-      <div class="entry">
-        <div class="when">2026</div>
-        <div>
-          <h3>Application Engineering Intern, GenAI Technical Support</h3>
-          <div class="org">STMicroelectronics, Tunis</div>
-          <ul class="list">
-            <li>Owned the knowledge-base layer of a GenAI support solution for STM32 users: data strategy, retrieval and quality.</li>
-            <li>Built Python pipelines that turn datasheets, reference manuals, errata, wiki and GitHub content into structured, metadata-enriched chunks for RAG.</li>
-            <li>Built a local multimodal pipeline (VLM inference) to extract figures and tables from technical PDFs.</li>
-            <li>Implemented validation, data-quality and version-comparison mechanisms to monitor consistency, freshness and traceability.</li>
-            <li>Automated verification, updates, reporting and supervision with Python, databases and APIs, using Prefect and a supervision dashboard.</li>
-            <li>Tested GenAI assistants against evaluation targets and contributed to the MLOps setup.</li>
+    <section id="projets">
+      <h2>Projets</h2>
+      <div class="projects">
+        <article class="project">
+          <h3>Émulation de bus CAN automobile</h3>
+          <p>Une carte STM32F407 simule les données d'un véhicule et les envoie sur un bus CAN vers un tableau de bord web en temps réel.</p>
+          <ul>
+            <li>Trames CAN à identifiant 11 bits et transceiver TJA1050</li>
+            <li>Backend Node.js avec WebSocket</li>
+            <li>Tableau de bord Chart.js adapté à tous les écrans, export CSV et JSON</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="when">Jul 2025 to Sep 2025</div>
-        <div>
-          <h3>Full-Stack Developer Intern</h3>
-          <div class="org">TSE Consultant INT, Tunisia</div>
-          <ul class="list">
-            <li>Built an Intelligent Office Assistant combining AI, web technologies and workflow automation for document, email and voice tasks.</li>
-            <li>Developed backend services, REST APIs and interfaces with React, Node.js, Express.js, MongoDB and TypeScript.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="when">Jul 2024 to Sep 2024</div>
-        <div>
-          <h3>MERN Stack Developer Intern</h3>
-          <div class="org">SQILCO, Tunisia</div>
-          <ul class="list">
-            <li>Developed web features, REST APIs, database operations and application logic with MongoDB, Express.js, React and Node.js.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="when">Jul 2023 to Sep 2023</div>
-        <div>
-          <h3>Software Engineering Intern</h3>
-          <div class="org">ALX Africa</div>
-          <ul class="list">
-            <li>Worked with Linux, C, Git, command-line tools and debugging.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="alt">
-    <div class="wrap">
-      <h2>Projects</h2>
-      <p class="intro">Selected work, starting with the project I am most proud of.</p>
-
-      <div class="cards">
-        <article class="card wide">
-          <h3>Paylane Payment-Support Agent</h3>
-          <div class="meta">Take-home project</div>
-          <p>A Python customer-support agent using an OpenAI-compatible chat endpoint and four tools, with an optional FastAPI wrapper (<code>/health</code>, <code>/chat</code>). Critical decisions (identity verification, lockout after 3 failed attempts, refund eligibility, human escalation and card-data protection) are enforced by deterministic server-side policy checks rather than left to the LLM.</p>
-          <ul class="list">
-            <li>75 deterministic tests, all passing.</li>
-            <li>A live LLM evaluation of 12 scenarios, all passing, with JSON transcripts. It covers aggressive duplicate refunds, fraud claims, legal threats and third-party access attempts.</li>
-            <li>Documentation of a failure the evaluation missed, how it was found and how it was fixed, plus design notes, edge cases and an AI-assistance disclosure.</li>
-          </ul>
-          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LLM agents</span><span class="tag">pytest</span><span class="tag">Evaluation</span></div>
+          <ul class="tags"><li>STM32F407</li><li>CAN</li><li>Node.js</li><li>WebSocket</li><li>Chart.js</li></ul>
         </article>
-
-        <article class="card">
-          <h3>GenAI Support Knowledge Base</h3>
-          <div class="meta">STMicroelectronics, 2026</div>
-          <p>Data and retrieval layer for an STM32 support assistant: metadata-enriched chunking, validation, version comparison and a supervision dashboard.</p>
-          <div class="tags"><span class="tag">RAG</span><span class="tag">Prefect</span><span class="tag">VLM</span><span class="tag">Python</span></div>
+        <article class="project">
+          <h3>Analyse faciale en temps réel par IA</h3>
+          <p>Détection des émotions, de l'âge et du genre à partir d'une webcam, embarquée sur Raspberry Pi 4B.</p>
+          <ul>
+            <li>Modèles de deep learning pré-entraînés exécutés avec TensorFlow Lite</li>
+            <li>Applications visées : santé, éducation, sécurité</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>OpenCV</li><li>TensorFlow Lite</li><li>Raspberry Pi 4B</li></ul>
         </article>
-
-        <article class="card">
-          <h3>Intelligent Office Assistant</h3>
-          <div class="meta">TSE Consultant INT, 2025</div>
-          <p>An AI-powered assistant that automates document, email and voice tasks, with a React interface and a Node.js backend.</p>
-          <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div>
-        </article>
-
-        <article class="card">
-          <h3>STM32 CAN Monitoring System</h3>
-          <div class="meta">Embedded systems</div>
-          <p>CAN communication with a Node.js backend and a React dashboard for real-time monitoring.</p>
-          <div class="tags"><span class="tag">STM32</span><span class="tag">CAN</span><span class="tag">React</span><span class="tag">Node.js</span></div>
-        </article>
-
-        <article class="card">
-          <h3>Computer Vision and Robotics</h3>
-          <div class="meta">Robotics</div>
-          <p>Object and sign detection and environment perception for a robotics platform.</p>
-          <div class="tags"><span class="tag">ROS</span><span class="tag">YOLO</span></div>
+        <article class="project wide">
+          <h3>Agent de support paiement Paylane</h3>
+          <p>Un agent de support client en Python, avec un modèle de langage et quatre outils, et une API FastAPI en option (<code>/health</code>, <code>/chat</code>). Les décisions critiques (vérification d'identité, blocage après 3 échecs, éligibilité au remboursement, escalade vers un humain, protection des données de carte) sont appliquées par des règles côté serveur, pas laissées au modèle.</p>
+          <ul>
+            <li>75 tests déterministes, tous réussis</li>
+            <li>Évaluation réelle sur 12 scénarios, tous réussis : remboursements en double, fraude, menaces juridiques, accès par un tiers</li>
+            <li>Documentation d'un défaut que l'évaluation n'avait pas vu, de sa détection et de sa correction</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>FastAPI</li><li>Agents LLM</li><li>pytest</li><li>Évaluation</li></ul>
         </article>
       </div>
-    </div>
-  </section>
+      <p class="caption">Le code de ces projets est sur <a href="https://github.com/rouabadraoui158">mon GitHub</a>.</p>
+    </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <h2>Skills</h2>
-      <p class="intro">Technical skills grouped by area.</p>
-      <dl>
-        <div class="skill"><dt>Agents and GenAI</dt><dd>LLM agents, tool use and orchestration, RAG, semantic search, multimodal pipelines (local VLM), prompt design, agent evaluation, responsible AI</dd></div>
-        <div class="skill"><dt>Frontend</dt><dd>React, TypeScript, JavaScript, HTML, CSS</dd></div>
-        <div class="skill"><dt>Backend and APIs</dt><dd>Python, FastAPI, Node.js, Express.js, REST APIs, asynchronous workflows, MongoDB, SQL, SQLite</dd></div>
-        <div class="skill"><dt>Infrastructure and quality</dt><dd>Docker, Git, GitHub, Tekton CI/CD, Prefect, Linux, Microsoft Azure, pytest, monitoring and supervision dashboards</dd></div>
-        <div class="skill"><dt>Data engineering</dt><dd>Document extraction, metadata enrichment, data validation, version comparison</dd></div>
+    <section id="experience">
+      <h2>Expérience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="when">Février à septembre 2026</div>
+          <div>
+            <h3>Application Engineering Intern, GenAI Technical Support</h3>
+            <p class="where">STMicroelectronics, Tunis (PFE)</p>
+            <ul>
+              <li>Pipelines de données, assistants intelligents et outils de supervision en Python et FastAPI</li>
+              <li>RAG et LLM multimodaux pour transformer une documentation technique complexe en réponses fiables</li>
+              <li>Pipelines Python qui transforment fiches techniques, manuels de référence, errata, wiki et contenus GitHub en blocs structurés enrichis de métadonnées pour le RAG</li>
+              <li>Validation, contrôle de la qualité des données et comparaison de versions, avec supervision par Prefect et un tableau de bord</li>
+              <li>Intégration de bases de données SQL au pipeline</li>
+              <li>Évaluation de la qualité des réponses</li>
+              <li>Temps de recherche d'information dans la documentation réduit de 90 %</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Juillet à septembre 2025</div>
+          <div>
+            <h3>Full Stack Developer (stage)</h3>
+            <p class="where">TSE Consultant INT, Tunis</p>
+            <ul>
+              <li>Plateforme web basée sur l'IA qui automatise les tâches bureautiques et administratives</li>
+              <li>Intégration front-end, back-end et API</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Juillet à septembre 2024</div>
+          <div>
+            <h3>MERN Stack Developer (stage)</h3>
+            <p class="where">Sqilco Tunisia</p>
+            <ul>
+              <li>Site web pour une école privée sur la stack MongoDB, Express.js, React, Node.js</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Juillet à septembre 2023</div>
+          <div>
+            <h3>Software Engineer (stage)</h3>
+            <p class="where">alx_africa</p>
+            <ul>
+              <li>Stage d'apprentissage : Linux, Git, débogage, programmation C et C++, tests</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <dl class="skills">
+        <div><dt>Embarqué et IoT</dt><dd>STM32, microcontrôleurs, RTOS, FPGA et SoC, Raspberry Pi 4B</dd></div>
+        <div><dt>Protocoles</dt><dd>UART, I2C, SPI, CAN, MQTT, HTTP et REST, BLE, LoRa et LoRaWAN, Zigbee, Modbus, TCP/IP, Ethernet, VPN et pare-feu</dd></div>
+        <div><dt>IA générative et vision</dt><dd>RAG, LLM multimodaux, évaluation de la qualité des réponses, Azure Machine Learning, OpenCV, TensorFlow Lite</dd></div>
+        <div><dt>Logiciel</dt><dd>C et C++, Python, FastAPI, React et TypeScript, stack MERN, Node.js, WebSocket, Chart.js, JavaScript, Git, Linux, Docker, pytest</dd></div>
+        <div><dt>Données</dt><dd>SQL, SQLite, conception et optimisation de bases de données avec IA</dd></div>
+        <div><dt>DevOps et méthodes</dt><dd>Prefect, Tekton CI/CD, Windows PowerShell, Agile et Kanban</dd></div>
       </dl>
-    </div>
-  </section>
+    </section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="alt">
-    <div class="wrap">
-      <h2>Education and certifications</h2>
-      <p class="intro">Degrees, training and languages.</p>
+    <section id="formation">
+      <h2>Formation et certifications</h2>
       <div class="two">
         <div>
-          <div class="entry" style="grid-template-columns:1fr;padding-top:0">
-            <div>
-              <h3>Engineering Degree in Computer Science, IoT and Embedded Systems</h3>
-              <div class="org">Institut Supérieur d'Informatique (ISI Ariana), Tunisia</div>
-              <div class="when">2023 to 2026</div>
-            </div>
-          </div>
-          <div class="entry" style="grid-template-columns:1fr;border-bottom:0;padding-bottom:0">
-            <div>
-              <h3>Bachelor's Degree in Software Engineering and Information Systems</h3>
-              <div class="org">Faculty of Sciences and Technology of Sidi Bouzid, Tunisia</div>
-              <div class="when">2019 to 2023</div>
-            </div>
-          </div>
+          <h3>Formation</h3>
+          <ul class="plain">
+            <li><strong>Diplôme d'ingénieur en systèmes embarqués et IoT</strong><small>ISI Ariana, 20 octobre 2026</small></li>
+            <li><strong>Licence en génie logiciel</strong><small>Faculté des Sciences et Techniques de Sidi Bouzid, 26 décembre 2023</small></li>
+          </ul>
+          <h3 style="margin-top:1.5rem">Langues</h3>
+          <ul class="plain">
+            <li>Français : niveau C1</li>
+            <li>Anglais : niveau C1 (IELTS)</li>
+          </ul>
         </div>
         <div>
           <h3>Certifications</h3>
-          <ul class="list">
-            <li>Generative AI Training: RAG, AI Agents and Responsible AI</li>
-            <li>Microsoft Azure / Azure Machine Learning (Coursera)</li>
-            <li>NVIDIA Jetson Nano Training (2025)</li>
-            <li>STM32 Training Certificate, Freeways Club, ISI Ariana</li>
-          </ul>
-          <h3 style="margin-top:22px">Languages</h3>
-          <ul class="list">
-            <li>Arabic: native</li>
-            <li>French: professional</li>
-            <li>English: professional working proficiency</li>
-            <li>German: A1</li>
+          <ul class="plain">
+            <li><strong>Microsoft Certified : SQL AI Developer Associate</strong><small>Microsoft, 13 septembre 2026</small></li>
+            <li>Getting Started with AI on Jetson Nano</li>
+            <li>Create Charts and Dashboards Using Microsoft Excel</li>
+            <li>Sécurisez votre réseau grâce aux VPN et Firewall</li>
+            <li>Mobile Development and JavaScript</li>
+            <li>Projet guidé : les expressions régulières en Python</li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <p class="intro">I am open to research and engineering opportunities across Europe.</p>
-      <ul class="contact-list">
-        <li><span>Email</span><a href="mailto:rouabadraoui158@gmail.com">rouabadraoui158@gmail.com</a></li>
-        <li><span>LinkedIn</span><a href="https://linkedin.com/in/roua-badraoui-613b91232">linkedin.com/in/roua-badraoui-613b91232</a></li>
-        <li><span>GitHub</span><a href="https://github.com/rouabadraoui158">github.com/rouabadraoui158</a></li>
-      </ul>
-      <a class="btn primary" href="uploads/cv.pdf">Download CV</a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">&copy; <span id="yr"></span> Roua Badraoui</div>
-</footer>
-<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+    <footer>
+      <p>Roua Badraoui, Sidi Bouzid, Tunisie. <a href="mailto:rouabadraoui158@gmail.com">rouabadraoui158@gmail.com</a></p>
+    </footer>
+  </main>
+</div>
 </body>
 </html>

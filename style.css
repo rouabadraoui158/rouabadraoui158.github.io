@@ -42,9 +42,9 @@ a:hover { color: var(--copper-dark); }
   .id { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; }
 }
 .id h1 {
-  font-stretch: 112%;
-  font-weight: 800;
-  font-size: 2rem;
+  font-stretch: 100%;
+  font-weight: 700;
+  font-size: 1.75rem;
   line-height: 1.1;
   margin: 0 0 .5rem;
   letter-spacing: -0.01em;
@@ -83,9 +83,9 @@ a:hover { color: var(--copper-dark); }
 .main { padding: 2.5rem 1.5rem 4rem; max-width: 62rem; }
 @media (min-width: 960px) { .main { padding: 3.5rem 3.5rem 5rem; } }
 .hero h2 {
-  font-stretch: 118%; font-weight: 800;
-  font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.1; letter-spacing: -0.015em;
-  margin: 0 0 1rem; max-width: 22ch;
+  font-stretch: 100%; font-weight: 700;
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem); line-height: 1.2; letter-spacing: -0.01em;
+  margin: 0 0 1rem; max-width: 32ch;
 }
 .lead { max-width: 60ch; font-size: 1.15rem; color: var(--muted); margin: 0; }
 
@@ -105,7 +105,7 @@ a:hover { color: var(--copper-dark); }
 .chain li:nth-child(2)::after { animation-delay: .5s; }
 .chain li:nth-child(3)::after { animation-delay: .85s; }
 .chain li:nth-child(4)::after { animation-delay: 1.2s; }
-.chain b { display: block; font-weight: 700; font-stretch: 104%; }
+.chain b { display: block; font-weight: 700; }
 .chain span { color: var(--muted); font-size: .95rem; }
 @keyframes trace { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (min-width: 760px) {
@@ -119,7 +119,7 @@ a:hover { color: var(--copper-dark); }
 
 section { margin-top: 4rem; scroll-margin-top: 1.5rem; }
 section > h2 {
-  font-stretch: 108%; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.01em;
+  font-stretch: 100%; font-weight: 700; font-size: 1.45rem; letter-spacing: -0.01em;
   margin: 0 0 1.25rem; padding-bottom: .6rem; border-bottom: 3px solid var(--board);
 }
 
@@ -166,7 +166,7 @@ footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--lin
 .letter { background: var(--card); border: 1px solid var(--line); padding: 2.5rem 2.25rem; }
 .letter p { margin: 0 0 1rem; max-width: 66ch; }
 .letter .sender { margin-bottom: 1.5rem; }
-.letter .sender strong { font-size: 1.25rem; font-stretch: 108%; }
+.letter .sender strong { font-size: 1.25rem; }
 .letter .date { text-align: right; }
 .letter .subject { font-weight: 700; }
 

@@ -44,14 +44,28 @@
         <a class="btn ghost" href="lettre.html">Lire la lettre de motivation</a>
       </div>
 
-      <ol class="chain" aria-label="Chaîne de mon projet de bus CAN, du capteur au tableau de bord">
-        <li><b>Données véhicule</b><span>SOC, température, tension, courant</span></li>
-        <li><b>STM32F407</b><span>Firmware, trames à identifiant 11 bits</span></li>
-        <li><b>Bus CAN</b><span>Transceiver TJA1050</span></li>
-        <li><b>Node.js</b><span>Backend et WebSocket</span></li>
-        <li><b>Tableau de bord</b><span>Chart.js, export CSV et JSON</span></li>
-      </ol>
-      <p class="caption">La chaîne de mon projet d'émulation de bus CAN automobile.</p>
+      <figure class="monitor" aria-labelledby="mon-cap">
+        <div class="mon-head">
+          <ol class="pipe" aria-label="Chaîne du projet : STM32F407, bus CAN, Node.js, tableau de bord">
+            <li>STM32F407</li><li>Bus CAN</li><li>Node.js</li><li>Tableau de bord</li>
+          </ol>
+          <button type="button" class="mon-btn" id="mon-toggle" aria-pressed="false">Pause</button>
+        </div>
+        <div class="mon-grid">
+          <div class="gauges">
+            <div class="g"><span class="g-l">Charge batterie</span><b><span class="g-v" id="v-soc">--</span><small> %</small></b><div class="g-bar"><i id="b-soc"></i></div></div>
+            <div class="g"><span class="g-l">Température</span><b><span class="g-v" id="v-tmp">--</span><small> °C</small></b><div class="g-bar"><i id="b-tmp"></i></div></div>
+            <div class="g"><span class="g-l">Tension</span><b><span class="g-v" id="v-vol">--</span><small> V</small></b><div class="g-bar"><i id="b-vol"></i></div></div>
+            <div class="g"><span class="g-l">Courant</span><b><span class="g-v" id="v-cur">--</span><small> A</small></b><div class="g-bar"><i id="b-cur"></i></div></div>
+          </div>
+          <div class="trace">
+            <canvas id="mon-cv" height="150" aria-hidden="true"></canvas>
+            <p class="legend"><span class="k k-v"></span>Tension <span class="k k-c"></span>Courant</p>
+          </div>
+        </div>
+        <div class="log" id="mon-log" aria-hidden="true"></div>
+        <figcaption id="mon-cap">Simulation à but d'illustration de mon projet d'émulation de bus CAN : une carte STM32F407 envoie des trames à identifiant 11 bits, un backend Node.js les relaie en WebSocket vers un tableau de bord Chart.js.</figcaption>
+      </figure>
     </div>
 
     <section id="projets">
@@ -189,5 +203,74 @@
     </footer>
   </main>
 </div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cv = $("mon-cv"), log = $("mon-log"), btn = $("mon-toggle");
+  if (!cv || !log || !btn) return;
+  var ctx = cv.getContext("2d");
+  var t = 0, soc = 82, tmp = 27, vol = 392, cur = 0, n = 0, timer = null;
+  var hv = [], hc = [], MAX = 120, lines = [];
+  var FR = [
+    { id: "0x1A0", name: "SOC",     val: function () { return soc; }, fmt: function (v) { return v.toFixed(1) + " %"; }, raw: function (v) { return Math.round(v * 10); } },
+    { id: "0x1A1", name: "TEMP",    val: function () { return tmp; }, fmt: function (v) { return v.toFixed(1) + " °C"; }, raw: function (v) { return Math.round((v + 40) * 10); } },
+    { id: "0x1A2", name: "VOLTAGE", val: function () { return vol; }, fmt: function (v) { return v.toFixed(1) + " V"; }, raw: function (v) { return Math.round(v * 10); } },
+    { id: "0x1A3", name: "CURRENT", val: function () { return cur; }, fmt: function (v) { return v.toFixed(1) + " A"; }, raw: function (v) { return Math.round((v + 500) * 10); } }
+  ];
+  function hex(v, w) { var s = v.toString(16).toUpperCase(); while (s.length < w) s = "0" + s; return s; }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function step() {
+    t++;
+    cur = 70 * Math.sin(t / 14) + 28 * Math.sin(t / 5) + (Math.random() - 0.5) * 6;
+    soc = Math.max(8, soc - 0.012 - Math.max(0, cur) / 9000);
+    tmp += ((26 + Math.abs(cur) * 0.1) - tmp) * 0.04;
+    vol = 396 - (100 - soc) * 0.32 - cur * 0.05 + (Math.random() - 0.5) * 0.4;
+    hv.push(vol); hc.push(cur);
+    if (hv.length > MAX) { hv.shift(); hc.shift(); }
+  }
+  function gauges() {
+    $("v-soc").textContent = soc.toFixed(1);  $("b-soc").style.width = clamp(soc, 0, 100) + "%";
+    $("v-tmp").textContent = tmp.toFixed(1);  $("b-tmp").style.width = clamp((tmp - 15) / 35 * 100, 0, 100) + "%";
+    $("v-vol").textContent = vol.toFixed(1);  $("b-vol").style.width = clamp((vol - 350) / 60 * 100, 0, 100) + "%";
+    $("v-cur").textContent = cur.toFixed(1);  $("b-cur").style.width = clamp((cur + 110) / 220 * 100, 0, 100) + "%";
+  }
+  function frame() {
+    var f = FR[n % 4], v = f.val(), r = f.raw(v);
+    var data = hex((r >> 8) & 255, 2) + " " + hex(r & 255, 2) + " " + hex(n & 255, 2) + " 00 00 00 00 00";
+    var s = (t * 0.22).toFixed(2);
+    lines.push("<span>" + (s.length < 7 ? new Array(8 - s.length).join("\u00a0") : "") + s + "s</span>  <b>" + f.id + "</b>  [8]  " + data + "  <em>" + f.name + " " + f.fmt(v) + "</em>");
+    if (lines.length > 7) lines.shift();
+    log.innerHTML = lines.join("\n");
+    n++;
+  }
+  function draw() {
+    var dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+    if (cv.width !== Math.round(w * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(214,234,223,.12)"; ctx.lineWidth = 1;
+    for (var i = 1; i < 4; i++) { ctx.beginPath(); ctx.moveTo(0, h * i / 4); ctx.lineTo(w, h * i / 4); ctx.stroke(); }
+    function line(a, lo, hi, col) {
+      ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.beginPath();
+      for (var k = 0; k < a.length; k++) {
+        var x = k / (MAX - 1) * w, y = h - 8 - (clamp(a[k], lo, hi) - lo) / (hi - lo) * (h - 16);
+        if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+      }
+      ctx.stroke();
+    }
+    line(hv, 380, 400, "#7fd1ae");
+    line(hc, -110, 110, "#e3b04b");
+  }
+  function tick() { if (document.hidden) return; step(); gauges(); frame(); draw(); }
+  for (var i = 0; i < 90; i++) { step(); if (i > 60) frame(); }
+  gauges(); draw();
+  function start() { timer = setInterval(tick, 220); btn.textContent = "Pause"; btn.setAttribute("aria-pressed", "false"); }
+  function stop() { clearInterval(timer); timer = null; btn.textContent = "Reprendre"; btn.setAttribute("aria-pressed", "true"); }
+  btn.addEventListener("click", function () { timer ? stop() : start(); });
+  window.addEventListener("resize", draw);
+  if (reduce) { stop(); } else { start(); }
+})();
+</script>
 </body>
 </html>

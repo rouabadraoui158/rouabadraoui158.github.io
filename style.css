@@ -192,3 +192,5 @@ footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--lin
 .log em { color: #d6eadf; font-style: normal; }
 .monitor figcaption { margin-top: .8rem; font-size: .82rem; color: #9fc4b3; max-width: 70ch; }
 @media (max-width: 520px) { .log { font-size: .62rem; } }
+
+.demo { margin: 1rem 0 0; }
